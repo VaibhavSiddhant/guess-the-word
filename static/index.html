@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guess the Word</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>Guess the word</h1>
+  <div id="who" hidden><span id="whoName"></span> <button id="logout" class="link">Log out</button></div>
+</header>
+<main>
+
+  <!-- Login / register -->
+  <section id="authView" hidden>
+    <div class="tabs">
+      <button id="tabLogin" class="tab active">Log in</button>
+      <button id="tabRegister" class="tab">Register</button>
+    </div>
+    <form id="authForm" autocomplete="off">
+      <label>Username <input id="username" required></label>
+      <label>Password <input id="password" type="password" required></label>
+      <p class="hint" id="authHint"></p>
+      <button class="primary" id="authSubmit">Log in</button>
+    </form>
+  </section>
+
+  <!-- Player -->
+  <section id="playerView" hidden>
+    <p id="quota" class="hint"></p>
+    <div id="board" aria-label="Guess board"></div>
+    <form id="guessForm" autocomplete="off" hidden>
+      <input id="guessInput" maxlength="5" placeholder="5 LETTERS" aria-label="Your guess">
+      <button class="primary">Guess</button>
+    </form>
+    <button id="startBtn" class="primary">Start a new word</button>
+    <p class="legend"><i class="t green"></i> right spot <i class="t orange"></i> wrong spot <i class="t grey"></i> not in word</p>
+  </section>
+
+  <!-- Admin -->
+  <section id="adminView" hidden>
+    <h2>Daily report</h2>
+    <form id="dayForm" class="row">
+      <input id="dayDate" type="date" required>
+      <button class="primary">Show</button>
+    </form>
+    <table id="dayTable" hidden>
+      <tr><th>Users who played</th><th>Words given</th><th>Correct guesses</th></tr>
+      <tr><td id="dUsers"></td><td id="dGames"></td><td id="dWins"></td></tr>
+    </table>
+
+    <h2>User report</h2>
+    <form id="userForm" class="row">
+      <input id="reportUser" placeholder="Username" required>
+      <button class="primary">Show</button>
+    </form>
+    <table id="userTable" hidden>
+      <thead><tr><th>Date</th><th>Words tried</th><th>Correct guesses</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <p id="msg" role="alert"></p>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
